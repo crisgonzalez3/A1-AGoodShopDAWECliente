@@ -2,15 +2,12 @@ const productos = [
     { SKU: "0K3QOSOV4V", title: "iFhone 13 Pro", price: 938.99 },
     { SKU: "TGD5XORY1L", title: "Cargador", price: 49.99 },
     { SKU: "IOKW9BQ9F3", title: "Funda de piel", price: 79.99 },
-    { SKU: "0K3QOSOV5V", title: "iFhone 14 Pro", price: 1200.99 },
-    { SKU: "0K3QOSOV5V", title: "iFhone 15 Pro", price: 1500.99 },
-    { SKU: "0K3QOSOV5V", title: "Apple Watch", price: 570.99 },
-    { SKU: "0K3QOSOV5V", title: "AirPods", price: 290.99 },
-    { SKU: "0K3QOSOV5V", title: "Funda AirPods", price: 35.99 }
+    { SKU: "0K3QOSOV5V", title: "iFhone 14 Pro", price: 1200.99 }
 ];
 
 let carrito = [];
 
+// Cargar productos disponibles en la lista
 function cargarProductos() {
     const productosList = document.getElementById('productos');
     productos.forEach(producto => {
@@ -27,6 +24,7 @@ function cargarProductos() {
     });
 }
 
+// Agregar producto al carrito
 function agregarProducto(sku) {
     const producto = productos.find(p => p.SKU === sku);
     if (producto) {
@@ -35,14 +33,16 @@ function agregarProducto(sku) {
     }
 }
 
+// Eliminar producto del carrito
 function eliminarProducto(sku) {
     carrito = carrito.filter(p => p.SKU !== sku);
     actualizarCarrito();
 }
 
+// Actualizar la lista del carrito y el total
 function actualizarCarrito() {
     const carritoList = document.getElementById('carrito');
-    carritoList.innerHTML = '';
+    carritoList.innerHTML = ''; // Limpiar lista
 
     carrito.forEach(producto => {
         const li = document.createElement('li');
